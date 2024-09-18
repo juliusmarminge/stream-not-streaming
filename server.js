@@ -5,6 +5,9 @@ const app = Fastify({ logger: { level: 'debug' } })
 app.get("/", (req,reply) => {
     const stream = new ReadableStream({
         async start(controller) {
+            // Toggle this to see the test script acknowledge the response
+            // immediately insteda of waiting for `controller.close()`
+            // controller.enqueue("ack??")
             await new Promise(resolve => setTimeout(resolve, 5000))
             controller.close()
         }
