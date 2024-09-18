@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 
-const app = Fastify({ logger: true })
+const app = Fastify({ logger: { level: 'debug' } })
 
 app.get("/", (req,reply) => {
     const stream = new ReadableStream({
