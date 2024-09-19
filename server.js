@@ -8,7 +8,10 @@ app.get("/", (req,reply) => {
             // Toggle this to see the test script acknowledge the response
             // immediately insteda of waiting for `controller.close()`
             // controller.enqueue("ack??")
-            await new Promise(resolve => setTimeout(resolve, 5000))
+            await new Promise(resolve => setTimeout(resolve, 2500))
+            controller.enqueue("hello")
+            await new Promise(resolve => setTimeout(resolve, 2500))
+            controller.enqueue("goodbye")
             controller.close()
         }
     })
